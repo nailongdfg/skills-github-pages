@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>未知留言</title>
+<style>
+*{
+    background:#111;
+    color:#0f0;
+    font-family:Consolas,monospace;
+}
+.container{
+    max-width:700px;
+    margin:40px auto;
+    padding:20px;
+}
+#msg{
+    line-height:1.8;
+    font-size:16px;
+}
+input{
+    background:#222;
+    border:1px solid #0f0;
+    padding:8px;
+    margin:10px 0;
+    width:300px;
+    font-size:16px;
+}
+button{
+    border:1px solid #0f0;
+    padding:8px 16px;
+    cursor:pointer;
+}
+#result{
+    margin-top:15px;
+}
+.hidden-tip{
+    color:#111; /* 和背景融为一体，肉眼看不见，选中文字才能看到！ARG隐藏线索 */
+}
+</style>
+</head>
+<body>
+<div class="container">
+    <div id="msg">
+        <p>收到一段来自旧服务器的残留信息。</p>
+        <p>“在时间的起点，数字藏在季节里。</p>
+        <p>春=1，夏=2，秋=3，冬=？</p>
+        <p>当四季走完，就是开门的钥匙。”</p>
+        <p class="hidden-tip">提示：冬对应的数字，乘以2，就是密码</p>
+    </div>
+
+    <h3>请输入访问密钥：</h3>
+    <input type="text" id="pwdInput" placeholder="在此输入密钥">
+    <button onclick="checkPassword()">提交</button>
+    <div id="result"></div>
+
+</div>
+
+<script>
+// 正确密码
+const correctPwd = "8";
+
+function checkPassword(){
+    let input = document.getElementById("pwdInput").value.trim();
+    let resDom = document.getElementById("result");
+    if(input === correctPwd){
+        resDom.innerHTML = `<span style="color:#0ff">【访问成功】</span>
+        <p>服务器解锁。</p>
+        <p>下一条线索：查看这个网页的源代码，里面写着下一个地点。</p>`;
+    }else{
+        resDom.innerHTML = `<span style="color:#f33">密钥错误，请重新尝试。</span>`;
+    }
+}
+</script>
+</body>
+</html>
